@@ -1,1 +1,10 @@
 wget https://cran.r-project.org/bin/linux/ubuntu/focal-cran40/r-base-core_4.3.2-1.2004.0_amd64.deb
+# 解压 .deb 文件
+dpkg-deb -x r-base-core_4.3.2-1.2004.0_amd64.deb r-base-core
+
+# 进入解压后的目录
+cd r-base-core/usr/lib/R
+
+# 运行 R
+./bin/R
+install.packages('/home/wtwang2020/sofeware/AnnotationDbi',repos = NULL, type = "source",lib="/home/wtwang2020/miniconda3/envs/r-env/lib/R/library")
