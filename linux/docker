@@ -1,0 +1,52 @@
+# Use the Miniconda3 image as the base image
+FROM continuumio/miniconda3
+
+# Install mamba
+RUN conda install mamba -n base -c conda-forge
+
+# Create a new conda environment
+RUN mamba create -n myenv
+
+# Set the default command to run bash
+CMD ["bash"]
+
+############################################
+镜像
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://w27nd407.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+############################################
+echo '
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    git \
+    build-essential \
+    && apt-get clean
+
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
+    /bin/bash /tmp/miniconda.sh -b -p /opt/conda && \
+    rm /tmp/miniconda.sh
+
+ENV PATH /opt/conda/bin:$PATH
+
+CMD ["bash"]
+' > Dockerfile
+
+
+docker build -t git-conda-tools .
+docker run -it -v /home/wtwang2020/dataset:/dataset git-conda-tools
+
+conda init
+source ~/.bashrc
+docker exec -it agitated_burnell bash
+find /dataset -maxdepth 1 -exec ls -lh {} \;
