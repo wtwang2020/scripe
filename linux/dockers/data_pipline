@@ -1,0 +1,1 @@
+docker run -it -v /home/wtwang2020/data_manal:/data_manal --name data_pipline git-conda-tools
