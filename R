@@ -8,3 +8,8 @@ cd r-base-core/usr/lib/R
 # 运行 R
 ./bin/R
 install.packages('/home/wtwang2020/sofeware/AnnotationDbi',repos = NULL, type = "source",lib="/home/wtwang2020/miniconda3/envs/r-env/lib/R/library")
+
+https://github.com/settings/tokens?type=beta
+install.packages("gitcreds")
+library(gitcreds)
+gitcreds::gitcreds_set()
