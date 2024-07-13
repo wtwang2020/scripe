@@ -1,3 +1,4 @@
+
 # Use the Miniconda3 image as the base image
 FROM continuumio/miniconda3
 
@@ -60,3 +61,4 @@ docker commit temp_container git-conda-tools
 docker ps -a  # 列出所有容器，包括已停止的
 docker rm temp_container
 docker run -it -v /home/wtwang2020/dataset:/dataset --name temp_container git-conda-tools
+docker exec -it temp_container bash
