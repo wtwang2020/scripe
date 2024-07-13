@@ -50,3 +50,13 @@ conda init
 source ~/.bashrc
 docker exec -it agitated_burnell bash
 find /dataset -maxdepth 1 -exec ls -lh {} \;
+
+#####docker更新技术
+docker run -it -v /home/wtwang2020/dataset:/dataset --name temp_container git-conda-tools
+conda install some-package
+pip install some-python-package
+exit
+docker commit temp_container git-conda-tools
+docker ps -a  # 列出所有容器，包括已停止的
+docker rm temp_container
+docker run -it -v /home/wtwang2020/dataset:/dataset --name temp_container git-conda-tools
