@@ -1,1 +1,14 @@
 docker run -it -v /home/wtwang2020/data_manal:/data_manal --name data_pipline git-conda-tools
+
+rm -r /home/wtwang2020/dataset/csMR/example/single-cell-eQTL/*
+cp -r /home/wtwang2020/data_manal/eqtl/finally/* /home/wtwang2020/dataset/csMR/example/single-cell-eQTL/
+
+docker run -it -v /home/wtwang2020/dataset:/dataset --name temp_container git-conda-tools
+conda activate csMR
+snakemake -s work_flow.snakefile --configfile config.yml -j
+exit
+docker commit temp_container git-conda-tools
+docker ps -a  # 列出所有容器，包括已停止的
+docker rm temp_container
+docker run -it -v /home/wtwang2020/dataset:/dataset --name temp_container git-conda-tools
+docker exec -it temp_container bash
