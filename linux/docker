@@ -62,3 +62,9 @@ docker ps -a  # 列出所有容器，包括已停止的
 docker rm temp_container
 docker run -it -v /home/wtwang2020/dataset:/dataset --name temp_container git-conda-tools
 docker exec -it temp_container bash
+
+
+###############
+ps aux | grep snakemake
+nohup snakemake -s work_flow.snakefile --configfile config.yml -j 10 > snakemake.log 2>&1 &
+
