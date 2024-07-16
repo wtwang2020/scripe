@@ -1,0 +1,2 @@
+docker run -v /home/wtwang2020/project/nhanes:/home -it mrdata_analysis
+docker run -v /home/wtwang2020/project/nhanes:/home -it mrdata_analysis bash
