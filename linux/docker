@@ -68,4 +68,7 @@ docker exec -it temp_container bash
 ps aux | grep snakemake
 nohup snakemake -s work_flow.snakefile --configfile config.yml -j 10 > snakemake.log 2>&1 &
 tail -n 50 /home/wtwang2020/dataset/csMR/snakemake.log
+##########后台##########
+nohup snakemake -s work_flow.snakefile --configfile config.yml -j 10  > snakemake.log 2>&1 &
+
 
