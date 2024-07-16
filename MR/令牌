@@ -1,0 +1,15 @@
+https://api.opengwas.io/profile/
+usethis::edit_r_environ()
+library(TwoSampleMR)
+library(VariantAnnotation)
+#install.packages("VariantAnnotation")
+#remove.packages("VariantAnnotation")
+#remotes::install_github("Bioconductor/VariantAnnotation")
+#remotes::install_github("Bioconductor/gwasglue")
+library(gwasglue)
+
+###########正相关##############################
+usethis::edit_r_environ()
+OPENGWAS JWT = eyJhbGciOiJSUzI1NiIsImtpZCI6ImFwaS1qd3QiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhcGkub3Blbmd3YXMuaW8iLCJhdWQiOiJhcGkub3Blbmd3YXMuaW8iLCJzdWIiOiIyMDcxNzg2MzI0QHFxLmNvbSIsImlhdCI6MTcyMTE1MTI5NSwiZXhwIjoxNzIyMzYwODk1fQ.RSI-X0ma6NhJemx-36560OpKuoLYV95edABp1D3Zh0UJz4DupkCsExu7wPgHP8AXS4t3MJQgKMNrjvQI8Aev50VXgq3GK_PtTjZJmcA7s4PsZOaHuu0OlzDtD-RYV8pZVJNtHKXadOXF-aEhb53ysAiqaFRJKWazdpWKG7DHMCwyA0TF4WxGwONYoqt6MjX8iW0djBVuqR9bwopK2TypFRO9ORV72qkEeS020mBT2vi9K2qVWQb0mopgdGOwPVaoDEGghr24eUAR-5V5k5qN1yVSoceHWWSrdt-gaCjs7lVUpUOIwbwxueXjVlNQIdw2wDWB3bdM-9hDh_YIQp0avg
+
+options(ieugwasr_api = 'gwas-api.mrcieu.ac.uk/')
