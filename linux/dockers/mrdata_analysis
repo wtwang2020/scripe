@@ -1,2 +1,5 @@
 docker run -v /home/wtwang2020/project/nhanes:/home -it mrdata_analysis
 docker run -v /home/wtwang2020/project/nhanes:/home -it mrdata_analysis bash
+
+docker run -it -v /home/wtwang2020/project/nhanes:/home --name temp_mrdata_analysis mrdata_analysis bash
+conda activate MR
