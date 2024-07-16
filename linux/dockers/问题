@@ -1,0 +1,4 @@
+#空间解决
+sudo mkdir -p /home/docker-data
+sudo rsync -aP /var/lib/docker/ /home/docker-data
+  
