@@ -1,0 +1,89 @@
+########################没统计好的############################
+# Load necessary libraries
+library(ggplot2)
+
+# Set seed for reproducibility
+set.seed(42)
+
+# Generate test data
+years <- 2000:2023
+journals <- c("PLoSCompBiol", "PLoSGenetics", "PLoSMedicine", "PLoSNTD", "PLoSONE", "PLoSPathogens")
+data <- data.frame()
+
+for (journal in journals) {
+  for (year in years) {
+    num_papers <- sample(5:15, 1)  # number of papers per year
+    auth_nums <- rpois(num_papers, lambda = 5 + (which(journals == journal) - 1) * 2)  # varying average number of authors
+    temp_data <- data.frame(year = rep(year, num_papers),
+                            journal = rep(journal, num_papers),
+                            auth_num = auth_nums)
+    data <- rbind(data, temp_data)
+  }
+}
+
+# Check the first few rows of the generated data
+head(data)
+
+# Plot the data using ggplot2
+ggplot(data, aes(x = year, y = auth_num, col = journal, fill = journal)) +
+  stat_summary(fun.data = "mean_cl_boot", geom = "ribbon", alpha = I(0.5)) +
+  stat_summary(fun = "mean", geom = "line") +
+  labs(x = "Year", y = "Mean number of authors per paper") +
+  theme_bw() +
+  theme(legend.position = "top") +
+  scale_fill_brewer(type = "qual", palette = 2, 
+                    guide = guide_legend(direction = "vertical",
+                                         label.position = "bottom",
+                                         title = NULL, 
+                                         ncol = 6,
+                                         label.hjust = 0.5)) +
+  scale_color_brewer(type = "qual", palette = 2, guide = "none") +
+  facet_wrap(~journal, ncol = 23)
+
+########################统计好的#################################
+# Load necessary libraries
+library(ggplot2)
+
+# Generate test data with mean and confidence intervals
+set.seed(42)
+
+years <- 2000:2023
+journals <- c("PLoSCompBiol", "PLoSGenetics", "PLoSMedicine", "PLoSNTD", "PLoSONE", "PLoSPathogens")
+data <- data.frame()
+
+for (journal in journals) {
+  for (year in years) {
+    mean_auth_num <- rnorm(1, mean = 5 + (which(journals == journal) - 1) * 2, sd = 1)  # mean number of authors
+    lower <- mean_auth_num - runif(1, min = 0.5, max = 1.5)  # lower bound
+    upper <- mean_auth_num + runif(1, min = 0.5, max = 1.5)  # upper bound
+    temp_data <- data.frame(year = year,
+                            journal = journal,
+                            mean_auth_num = mean_auth_num,
+                            lower = lower,
+                            upper = upper)
+    data <- rbind(data, temp_data)
+  }
+}
+
+# Check the first few rows of the generated data
+head(data)
+
+# Plot the data using ggplot2
+ggplot(data, aes(x = year, y = mean_auth_num, col = journal, fill = journal)) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.3) +
+  geom_line(size = 1) +
+  labs(x = "Year", y = "Mean number of authors per paper") +
+  theme_bw() +
+  theme(legend.position = "top") +
+  scale_fill_brewer(type = "qual", palette = 2, 
+                    guide = guide_legend(direction = "vertical",
+                                         label.position = "bottom",
+                                         title = NULL, 
+                                         ncol = 6,
+                                         label.hjust = 0.5)) +
+  scale_color_brewer(type = "qual", palette = 2, guide = "none") +
+  facet_wrap(~journal, ncol = 3)
+
+
+
+
