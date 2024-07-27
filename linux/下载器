@@ -1,3 +1,9 @@
 #百度云
+strings /usr/lib64/libstdc++.so.6 | grep 'CXXABI'
+
+
+
 /home/wtwang2020/sofeware/BaiduPCS-Go-v3.9.5-linux-amd64/BaiduPCS-Go d /新所有文件/软件/依赖文件/ --saveto /home/wtwang2020/数据处理 -p 8
 /home/wtwang2020/sofeware/BaiduPCS-Go-v3.9.5-linux-amd64/BaiduPCS-Go d /xiyouyun/睡眠障碍与血压/ --saveto /home/wtwang2020/project/nhanes -p 8
+/home/wtwang2020/sofeware/BaiduPCS-Go-v3.9.5-linux-amd64/BaiduPCS-Go d /新所有文件/咸鱼/小明/ --saveto /home/wtwang2020/wangweitao/小明 -p 8 
+/home/wtwang2020/sofeware/BaiduPCS-Go-v3.9.5-linux-amd64/BaiduPCS-Go login -bduss=FlmQXF-aWZDS2RycjdnN1B6M1RsM2ZqWlRUTnFXb0Freml4VTBlY1Z-MTRUcU5tRVFBQUFBJCQAAAAAAAAAAAEAAAD8PtvNtcRqampoNTIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHjBe2Z4wXtmd
